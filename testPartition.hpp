@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <cassert>
+#include <bitset>
 
 template <typename Partition>
 void testHoarePartition(Partition partition) {
@@ -26,24 +27,18 @@ void testHoarePartition(Partition partition) {
         sortinner(a, 0, a.size() - 1);
     };
 
-    const int SIZE = 4;
+    constexpr int SIZE = 8;
     for (int i = 0; i < std::pow(2, SIZE); ++i) {
-        int n = i;
-        std::vector<int> num;
-        while (n) {
-            if (n % 2) {
-                num.push_back(1);
-            }
-            else {
-                num.push_back(0);
-            }
-            n = n / 2;
-        }
-        for (int i = num.size(); i < SIZE; ++i)
-            num.push_back(0);
+        std::bitset<SIZE> bs = i;
 
+        std::vector<int> num;
+        for (auto c : bs.to_string())
+            num.push_back(c - '0');
         std::reverse(num.begin(), num.end());
+
         sort(num);
+
+        // output error
         if (!std::is_sorted(num.begin(), num.end())) {
             std::cerr << "Partition error: ";
             for (int i = 0; i < SIZE; ++i)
