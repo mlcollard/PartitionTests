@@ -72,8 +72,6 @@ int main() {
             ++left;
             --right;
         }
-
-        return right;
     });
 
     // Hoare Partition Wikipedia Algorithm
