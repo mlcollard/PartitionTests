@@ -43,8 +43,8 @@ int main() {
             ++left2;
         }
         std::swap(a[i], a[high]);
-        return i;
 
+        return i;
     });
 
     return 0;
