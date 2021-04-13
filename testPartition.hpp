@@ -15,10 +15,8 @@ void testSort(Sort sort) {
     constexpr int SIZE = 10;
     for (int i = 0; i < std::pow(2, SIZE); ++i) {
 
-        // generate bit string in vector
         std::vector<int> num;
-        std::bitset<SIZE> bs = i;
-        for (auto c : bs.to_string())
+        for (auto c : std::bitset<SIZE>(i).to_string())
             num.push_back(c - '0');
         std::reverse(num.begin(), num.end());
 
@@ -36,8 +34,8 @@ void testSort(Sort sort) {
 template <typename Partition>
 void testLomutoPartition(Partition partition) {
 
-    std::function<void(std::vector<int>& a, int low, int high)> sort;
-    sort = [&partition,&sort](auto& a, int low, int high) {
+    std::function<void(std::vector<int>& a, int low, int high)> sort =
+    [&](auto& a, int low, int high) {
 
         if (low >= high)
             return;
@@ -55,8 +53,8 @@ void testLomutoPartition(Partition partition) {
 template <typename Partition>
 void testHoarePartition(Partition partition) {
 
-    std::function<void(std::vector<int>& a, int low, int high)> sort;
-    sort = [&partition,&sort](auto& a, int low, int high) {
+    std::function<void(std::vector<int>& a, int low, int high)> sort =
+    [&](auto& a, int low, int high) {
 
         if (low >= high)
             return;

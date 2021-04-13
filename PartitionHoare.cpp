@@ -13,7 +13,7 @@
 int main() {
 
     // Hoare Partition Wikipedia Algorithm
-    testHoarePartition([](auto& a, int low, int high)->int {
+    testHoarePartition([](std::vector<int>& a, int low, int high)->int {
 
         int pivot = a[std::floor((low + high) / 2)];
         int left = low - 1;
@@ -44,7 +44,7 @@ int main() {
     });
 
     // Hoare Partition Wikipedia Algorithm While Adjusted
-    testHoarePartition([](auto& a, int low, int high)->int {
+    testHoarePartition([](std::vector<int>& a, int low, int high)->int {
 
         int pivot = a[std::floor((low + high) / 2)];
         int left = low;
@@ -75,7 +75,7 @@ int main() {
     });
 
     // Hoare Partition Wikipedia Algorithm
-    testHoarePartition([](auto& a, int low, int high)->int {
+    testHoarePartition([](std::vector<int>& a, int low, int high)->int {
 
         int pivot = a[std::floor((low + high) / 2)];
         int left = low - 1;
