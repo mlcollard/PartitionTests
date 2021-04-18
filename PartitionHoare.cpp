@@ -74,11 +74,9 @@ int main() {
     });
 
     // Hoare Partition Wikipedia Algorithm While Adjusted
-    testHoarePartition([](std::vector<int>& a, int low, int high)->int {
+    testHoarePartition([](std::vector<int>& a, int left, int right)->int {
 
-        int pivot = a[std::floor((low + high) / 2)];
-        int left = low;
-        int right = high;
+        int pivot = a[std::floor((left + right) / 2)];
         while (true) {
 
             // move left to the right until value >= pivot
