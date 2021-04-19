@@ -12,7 +12,7 @@
 template <typename Sort>
 void testSort(Sort sort) {
 
-    constexpr int SIZE = 10;
+    constexpr int SIZE = 12;
     for (int i = 0; i < std::pow(2, SIZE); ++i) {
 
         std::vector<int> num;
