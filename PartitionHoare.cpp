@@ -13,7 +13,8 @@
 int main() {
 
     // Hoare Partition Wikipedia Algorithm
-    testHoarePartition([](std::vector<int>& a, int low, int high)->int {
+    int counter = 0;
+    testHoarePartition([&counter](std::vector<int>& a, int low, int high)->int {
 
         int pivot = a[std::floor((low + high) / 2)];
         int left = low - 1;
@@ -40,11 +41,14 @@ int main() {
      
             // swap values at left & right since a[left] >= pivot and a[right] is <= pivot
             std::swap(a[left], a[right]);
+            ++counter;
         }
     });
+    std::cout << "Hoare: " << counter << '\n';
 
     // Hoare Partition Try with while https://bit.ly/3mYWHsZ
-    testHoarePartition([](std::vector<int>& a, int left, int right)->int {
+    counter = 0;
+    testHoarePartition([&counter](std::vector<int>& a, int left, int right)->int {
 
         int pivot = a[std::floor((left + right) / 2)];
         while (left <= right) {
@@ -64,6 +68,7 @@ int main() {
             if (left <= right) {
                 // swap values at left & right since a[left] >= pivot and a[right] is <= pivot
                 std::swap(a[left], a[right]);
+                ++counter;
                 ++left;
                 --right;
             }
@@ -72,9 +77,11 @@ int main() {
         // Note: the implementation is off-by-one from our quicksort for Hoare
         return left - 1;
     });
+    std::cout << "Hoare: " << counter << '\n';
 
     // Hoare Partition Wikipedia Algorithm While Adjusted
-    testHoarePartition([](std::vector<int>& a, int left, int right)->int {
+    counter = 0;
+    testHoarePartition([&counter](std::vector<int>& a, int left, int right)->int {
 
         int pivot = a[std::floor((left + right) / 2)];
         while (true) {
@@ -97,13 +104,16 @@ int main() {
      
             // swap values at i & j since a[i] >= pivot and a[j] is <= pivot
             std::swap(a[left], a[right]);
+            ++counter;
             ++left;
             --right;
         }
     });
+    std::cout << "Hoare: " << counter << '\n';
 
     // Hoare Partition Wikipedia Algorithm test in while condition
-    testHoarePartition([](std::vector<int>& a, int low, int high)->int {
+    counter = 0;
+    testHoarePartition([&counter](std::vector<int>& a, int low, int high)->int {
 
         int pivot = a[std::floor((low + high) / 2)];
         int left = low - 1;
@@ -127,6 +137,7 @@ int main() {
      
             // swap values at left & right since a[left] >= pivot and a[right] is <= pivot
             std::swap(a[left], a[right]);
+            ++counter;
 
             // move left to the right until value >= pivot
             // which means the value at left must be swapped
@@ -143,9 +154,11 @@ int main() {
 
         return right;
     });
+    std::cout << "Hoare: " << counter << '\n';
 
     // Hoare Partition Wikipedia Algorithm
-    testHoarePartition([](std::vector<int>& a, int low, int high)->int {
+    counter = 0;
+    testHoarePartition([&counter](std::vector<int>& a, int low, int high)->int {
 
         int pivot = a[std::floor((low + high) / 2)];
         int left = low - 1;
@@ -172,10 +185,12 @@ int main() {
 
             // swap values at left & right since a[left] >= pivot and a[right] is <= pivot
             std::swap(a[left], a[right]);
+            ++counter;
         }
 
         return right;
     });
+    std::cout << "Hoare: " << counter << '\n';
 
     return 0;
 }
